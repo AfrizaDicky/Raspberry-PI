@@ -1,0 +1,23 @@
+import RPi.GPIO as GPIO
+import time
+from gpiozero import LED
+
+led = LED(20)
+pir = 21
+button = 16
+
+GPIO.setmode(GPIO.BCM)
+GPIO.setwarnings(False)
+GPIO.setup(pir, GPIO.IN)
+
+while True:
+    print(GPIO.input(pir))
+
+    if GPIO.input(pir) == 1:
+        led.on()
+        time.sleep(1)
+        led.off()
+    else:
+        led.off()
+        
+    
